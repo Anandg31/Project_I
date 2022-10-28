@@ -5,9 +5,9 @@ pipeline {
        stage('Ansible') {
 	    agent {label 'built-in'}
             steps {
-		sh 'cp /mykeypair.pem mykeypair.pem'
-		sh 'chmod 400 mykeypair.pem'
-		sh 'ansible-playbook -i hosts.yml playbook.yml'
+		sh 'sudo cp /mykeypair.pem mykeypair.pem'
+		sh 'sudo chmod 400 mykeypair.pem'
+		sh 'sudo ansible-playbook -i hosts.yml playbook.yml'
                 
 	    }
         }
