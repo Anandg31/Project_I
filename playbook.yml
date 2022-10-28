@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+  become_user: ubuntu
+  tasks:
+    - name: Check if docker is present
+      ansible.builtin.shell: |
+        sudo docker images
+      register: docker_out
+      ignore_errors: yes
+
+    - name: If docker does not exist
+      ansible.builtin.shell: |
+        sudo apt-get update
+        sudo apt-get install docker.io
+        sudo usemod -aG docker ubuntu
+      when: docker_out.rc != 0
+
+    - debug: 
+        var: docker_out.rc
+
