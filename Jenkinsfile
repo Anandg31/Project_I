@@ -6,7 +6,9 @@ pipeline {
             steps {
 		sh 'ls'
                 sh 'sudo docker build -t mywebsite:latest .'
-		sh 'sudo docker run --network=host -p 80:80 mywebsite'
+		sh 'sudo docker stop $(docker ps -a -q)'
+		sh 'sudo docker rm $(docker ps -a -q)'
+		sh 'sudo docker run --network=host -p 80:80 -d mywebsite'
             }
         }
     }
