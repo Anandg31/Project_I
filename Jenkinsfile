@@ -8,7 +8,7 @@ pipeline {
 		sh 'id'
 		sh 'ls ~'
 		sh 'pwd'
-		sh 'sudo ansible-playbook -i hosts.yml playbook.yml'
+		sh 'ansible-playbook -i hosts.yml playbook.yml'
                 
             }
         }
