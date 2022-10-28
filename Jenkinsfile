@@ -5,6 +5,7 @@ pipeline {
        stage('Ansible') {
 	    agent {label 'built-in'}
             steps {
+		sh 'id'
 		sh 'ls ~'
 		sh 'pwd'
 		sh 'sudo ansible-playbook -i hosts.yml playbook.yml'
