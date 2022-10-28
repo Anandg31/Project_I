@@ -5,12 +5,11 @@ pipeline {
        stage('Ansible') {
 	    agent {label 'built-in'}
             steps {
-		sh 'id'
-		sh 'ls ~'
-		sh 'pwd'
+		sh 'cp /mykeypair.pem mykeypair.pem'
+		sh 'chmod 400 mykeypair.pem'
 		sh 'ansible-playbook -i hosts.yml playbook.yml'
                 
-            }
+	    }
         }
         stage('Build docker') {
             steps {
