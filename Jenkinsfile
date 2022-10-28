@@ -7,6 +7,7 @@ pipeline {
             steps {
 		sh 'sudo cp /mykeypair.pem mykeypair.pem'
 		sh 'sudo chmod 400 mykeypair.pem'
+		sh 'export ANSIBLE_HOST_KEY_CHECKING=False'
 		sh 'sudo ansible-playbook -i hosts.yml playbook.yml'
                 
 	    }
