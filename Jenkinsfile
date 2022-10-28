@@ -3,7 +3,7 @@ pipeline {
 	     
     stages {
        stage('Ansible') {
-	    agent {label 'Built-In Node'}
+	    agent {label 'built-in'}
             steps {
 		sh 'ansible-playbook -i hosts.yml playbook.yml'
                 
