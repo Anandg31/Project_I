@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
 		sh 'ls'
-                sh 'docker build -t mywebsite:latest .'
-		sh 'docker run --network=host -p 80:80 mywebsite'
+                sh 'sudo docker build -t mywebsite:latest .'
+		sh 'sudo docker run --network=host -p 80:80 mywebsite'
             }
         }
     }
